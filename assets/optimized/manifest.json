@@ -1,0 +1,386 @@
+{
+  "assets/jpeg/JTC.jpeg": {
+    "width": 2560,
+    "height": 1400,
+    "sources": {
+      "avif": [
+        "assets/optimized/jpeg/JTC-320.avif",
+        "assets/optimized/jpeg/JTC-480.avif",
+        "assets/optimized/jpeg/JTC-640.avif",
+        "assets/optimized/jpeg/JTC-960.avif",
+        "assets/optimized/jpeg/JTC-1280.avif",
+        "assets/optimized/jpeg/JTC-1600.avif",
+        "assets/optimized/jpeg/JTC-1920.avif",
+        "assets/optimized/jpeg/JTC-2560.avif"
+      ],
+      "webp": [
+        "assets/optimized/jpeg/JTC-320.webp",
+        "assets/optimized/jpeg/JTC-480.webp",
+        "assets/optimized/jpeg/JTC-640.webp",
+        "assets/optimized/jpeg/JTC-960.webp",
+        "assets/optimized/jpeg/JTC-1280.webp",
+        "assets/optimized/jpeg/JTC-1600.webp",
+        "assets/optimized/jpeg/JTC-1920.webp",
+        "assets/optimized/jpeg/JTC-2560.webp"
+      ]
+    }
+  },
+  "assets/jpeg/banner-spoopy.jpeg": {
+    "width": 1400,
+    "height": 350,
+    "sources": {
+      "avif": [
+        "assets/optimized/jpeg/banner-spoopy-320.avif",
+        "assets/optimized/jpeg/banner-spoopy-480.avif",
+        "assets/optimized/jpeg/banner-spoopy-640.avif",
+        "assets/optimized/jpeg/banner-spoopy-960.avif",
+        "assets/optimized/jpeg/banner-spoopy-1280.avif",
+        "assets/optimized/jpeg/banner-spoopy-1400.avif"
+      ],
+      "webp": [
+        "assets/optimized/jpeg/banner-spoopy-320.webp",
+        "assets/optimized/jpeg/banner-spoopy-480.webp",
+        "assets/optimized/jpeg/banner-spoopy-640.webp",
+        "assets/optimized/jpeg/banner-spoopy-960.webp",
+        "assets/optimized/jpeg/banner-spoopy-1280.webp",
+        "assets/optimized/jpeg/banner-spoopy-1400.webp"
+      ]
+    }
+  },
+  "assets/jpeg/project-mockup-example.jpeg": {
+    "width": 1895,
+    "height": 1139,
+    "sources": {
+      "avif": [
+        "assets/optimized/jpeg/project-mockup-example-320.avif",
+        "assets/optimized/jpeg/project-mockup-example-480.avif",
+        "assets/optimized/jpeg/project-mockup-example-640.avif",
+        "assets/optimized/jpeg/project-mockup-example-960.avif",
+        "assets/optimized/jpeg/project-mockup-example-1280.avif",
+        "assets/optimized/jpeg/project-mockup-example-1600.avif",
+        "assets/optimized/jpeg/project-mockup-example-1895.avif"
+      ],
+      "webp": [
+        "assets/optimized/jpeg/project-mockup-example-320.webp",
+        "assets/optimized/jpeg/project-mockup-example-480.webp",
+        "assets/optimized/jpeg/project-mockup-example-640.webp",
+        "assets/optimized/jpeg/project-mockup-example-960.webp",
+        "assets/optimized/jpeg/project-mockup-example-1280.webp",
+        "assets/optimized/jpeg/project-mockup-example-1600.webp",
+        "assets/optimized/jpeg/project-mockup-example-1895.webp"
+      ]
+    }
+  },
+  "assets/jpeg/sketch.jpeg": {
+    "width": 1064,
+    "height": 1014,
+    "sources": {
+      "avif": [
+        "assets/optimized/jpeg/sketch-320.avif",
+        "assets/optimized/jpeg/sketch-480.avif",
+        "assets/optimized/jpeg/sketch-640.avif",
+        "assets/optimized/jpeg/sketch-960.avif",
+        "assets/optimized/jpeg/sketch-1064.avif"
+      ],
+      "webp": [
+        "assets/optimized/jpeg/sketch-320.webp",
+        "assets/optimized/jpeg/sketch-480.webp",
+        "assets/optimized/jpeg/sketch-640.webp",
+        "assets/optimized/jpeg/sketch-960.webp",
+        "assets/optimized/jpeg/sketch-1064.webp"
+      ]
+    }
+  },
+  "assets/png/Dinomite-Gameplay.png": {
+    "width": 3024,
+    "height": 1964,
+    "sources": {
+      "avif": [
+        "assets/optimized/png/Dinomite-Gameplay-320.avif",
+        "assets/optimized/png/Dinomite-Gameplay-480.avif",
+        "assets/optimized/png/Dinomite-Gameplay-640.avif",
+        "assets/optimized/png/Dinomite-Gameplay-960.avif",
+        "assets/optimized/png/Dinomite-Gameplay-1280.avif",
+        "assets/optimized/png/Dinomite-Gameplay-1600.avif",
+        "assets/optimized/png/Dinomite-Gameplay-1920.avif",
+        "assets/optimized/png/Dinomite-Gameplay-3024.avif"
+      ],
+      "webp": [
+        "assets/optimized/png/Dinomite-Gameplay-320.webp",
+        "assets/optimized/png/Dinomite-Gameplay-480.webp",
+        "assets/optimized/png/Dinomite-Gameplay-640.webp",
+        "assets/optimized/png/Dinomite-Gameplay-960.webp",
+        "assets/optimized/png/Dinomite-Gameplay-1280.webp",
+        "assets/optimized/png/Dinomite-Gameplay-1600.webp",
+        "assets/optimized/png/Dinomite-Gameplay-1920.webp",
+        "assets/optimized/png/Dinomite-Gameplay-3024.webp"
+      ]
+    }
+  },
+  "assets/png/JTC-Team.png": {
+    "width": 3840,
+    "height": 2160,
+    "sources": {
+      "avif": [
+        "assets/optimized/png/JTC-Team-320.avif",
+        "assets/optimized/png/JTC-Team-480.avif",
+        "assets/optimized/png/JTC-Team-640.avif",
+        "assets/optimized/png/JTC-Team-960.avif",
+        "assets/optimized/png/JTC-Team-1280.avif",
+        "assets/optimized/png/JTC-Team-1600.avif",
+        "assets/optimized/png/JTC-Team-1920.avif",
+        "assets/optimized/png/JTC-Team-3840.avif"
+      ],
+      "webp": [
+        "assets/optimized/png/JTC-Team-320.webp",
+        "assets/optimized/png/JTC-Team-480.webp",
+        "assets/optimized/png/JTC-Team-640.webp",
+        "assets/optimized/png/JTC-Team-960.webp",
+        "assets/optimized/png/JTC-Team-1280.webp",
+        "assets/optimized/png/JTC-Team-1600.webp",
+        "assets/optimized/png/JTC-Team-1920.webp",
+        "assets/optimized/png/JTC-Team-3840.webp"
+      ]
+    }
+  },
+  "assets/png/Slide.png": {
+    "width": 2984,
+    "height": 1664,
+    "sources": {
+      "avif": [
+        "assets/optimized/png/Slide-320.avif",
+        "assets/optimized/png/Slide-480.avif",
+        "assets/optimized/png/Slide-640.avif",
+        "assets/optimized/png/Slide-960.avif",
+        "assets/optimized/png/Slide-1280.avif",
+        "assets/optimized/png/Slide-1600.avif",
+        "assets/optimized/png/Slide-1920.avif",
+        "assets/optimized/png/Slide-2984.avif"
+      ],
+      "webp": [
+        "assets/optimized/png/Slide-320.webp",
+        "assets/optimized/png/Slide-480.webp",
+        "assets/optimized/png/Slide-640.webp",
+        "assets/optimized/png/Slide-960.webp",
+        "assets/optimized/png/Slide-1280.webp",
+        "assets/optimized/png/Slide-1600.webp",
+        "assets/optimized/png/Slide-1920.webp",
+        "assets/optimized/png/Slide-2984.webp"
+      ]
+    }
+  },
+  "assets/png/dinomite.png": {
+    "width": 2184,
+    "height": 1250,
+    "sources": {
+      "avif": [
+        "assets/optimized/png/dinomite-320.avif",
+        "assets/optimized/png/dinomite-480.avif",
+        "assets/optimized/png/dinomite-640.avif",
+        "assets/optimized/png/dinomite-960.avif",
+        "assets/optimized/png/dinomite-1280.avif",
+        "assets/optimized/png/dinomite-1600.avif",
+        "assets/optimized/png/dinomite-1920.avif",
+        "assets/optimized/png/dinomite-2184.avif"
+      ],
+      "webp": [
+        "assets/optimized/png/dinomite-320.webp",
+        "assets/optimized/png/dinomite-480.webp",
+        "assets/optimized/png/dinomite-640.webp",
+        "assets/optimized/png/dinomite-960.webp",
+        "assets/optimized/png/dinomite-1280.webp",
+        "assets/optimized/png/dinomite-1600.webp",
+        "assets/optimized/png/dinomite-1920.webp",
+        "assets/optimized/png/dinomite-2184.webp"
+      ]
+    }
+  },
+  "assets/png/duck.png": {
+    "width": 1121,
+    "height": 1121,
+    "sources": {
+      "avif": [
+        "assets/optimized/png/duck-320.avif",
+        "assets/optimized/png/duck-480.avif",
+        "assets/optimized/png/duck-640.avif",
+        "assets/optimized/png/duck-960.avif",
+        "assets/optimized/png/duck-1121.avif"
+      ],
+      "webp": [
+        "assets/optimized/png/duck-320.webp",
+        "assets/optimized/png/duck-480.webp",
+        "assets/optimized/png/duck-640.webp",
+        "assets/optimized/png/duck-960.webp",
+        "assets/optimized/png/duck-1121.webp"
+      ]
+    }
+  },
+  "assets/png/fesh2.png": {
+    "width": 952,
+    "height": 1138,
+    "sources": {
+      "avif": [
+        "assets/optimized/png/fesh2-320.avif",
+        "assets/optimized/png/fesh2-480.avif",
+        "assets/optimized/png/fesh2-640.avif",
+        "assets/optimized/png/fesh2-952.avif"
+      ],
+      "webp": [
+        "assets/optimized/png/fesh2-320.webp",
+        "assets/optimized/png/fesh2-480.webp",
+        "assets/optimized/png/fesh2-640.webp",
+        "assets/optimized/png/fesh2-952.webp"
+      ]
+    }
+  },
+  "assets/png/github-ico.png": {
+    "width": 30,
+    "height": 30,
+    "sources": {
+      "avif": [
+        "assets/optimized/png/github-ico-30.avif"
+      ],
+      "webp": [
+        "assets/optimized/png/github-ico-30.webp"
+      ]
+    }
+  },
+  "assets/png/icon.png": {
+    "width": 512,
+    "height": 512,
+    "sources": {
+      "avif": [
+        "assets/optimized/png/icon-320.avif",
+        "assets/optimized/png/icon-480.avif",
+        "assets/optimized/png/icon-512.avif"
+      ],
+      "webp": [
+        "assets/optimized/png/icon-320.webp",
+        "assets/optimized/png/icon-480.webp",
+        "assets/optimized/png/icon-512.webp"
+      ]
+    }
+  },
+  "assets/png/insta-ico.png": {
+    "width": 90,
+    "height": 90,
+    "sources": {
+      "avif": [
+        "assets/optimized/png/insta-ico-90.avif"
+      ],
+      "webp": [
+        "assets/optimized/png/insta-ico-90.webp"
+      ]
+    }
+  },
+  "assets/png/linkedin-ico.png": {
+    "width": 90,
+    "height": 90,
+    "sources": {
+      "avif": [
+        "assets/optimized/png/linkedin-ico-90.avif"
+      ],
+      "webp": [
+        "assets/optimized/png/linkedin-ico-90.webp"
+      ]
+    }
+  },
+  "assets/png/model.png": {
+    "width": 1410,
+    "height": 1600,
+    "sources": {
+      "avif": [
+        "assets/optimized/png/model-320.avif",
+        "assets/optimized/png/model-480.avif",
+        "assets/optimized/png/model-640.avif",
+        "assets/optimized/png/model-960.avif",
+        "assets/optimized/png/model-1280.avif",
+        "assets/optimized/png/model-1410.avif"
+      ],
+      "webp": [
+        "assets/optimized/png/model-320.webp",
+        "assets/optimized/png/model-480.webp",
+        "assets/optimized/png/model-640.webp",
+        "assets/optimized/png/model-960.webp",
+        "assets/optimized/png/model-1280.webp",
+        "assets/optimized/png/model-1410.webp"
+      ]
+    }
+  },
+  "assets/png/pfp.png": {
+    "width": 300,
+    "height": 300,
+    "sources": {
+      "avif": [
+        "assets/optimized/png/pfp-300.avif"
+      ],
+      "webp": [
+        "assets/optimized/png/pfp-300.webp"
+      ]
+    }
+  },
+  "assets/png/project_balls.png": {
+    "width": 1572,
+    "height": 1012,
+    "sources": {
+      "avif": [
+        "assets/optimized/png/project_balls-320.avif",
+        "assets/optimized/png/project_balls-480.avif",
+        "assets/optimized/png/project_balls-640.avif",
+        "assets/optimized/png/project_balls-960.avif",
+        "assets/optimized/png/project_balls-1280.avif",
+        "assets/optimized/png/project_balls-1572.avif"
+      ],
+      "webp": [
+        "assets/optimized/png/project_balls-320.webp",
+        "assets/optimized/png/project_balls-480.webp",
+        "assets/optimized/png/project_balls-640.webp",
+        "assets/optimized/png/project_balls-960.webp",
+        "assets/optimized/png/project_balls-1280.webp",
+        "assets/optimized/png/project_balls-1572.webp"
+      ]
+    }
+  },
+  "assets/png/spoopy.png": {
+    "width": 851,
+    "height": 567,
+    "sources": {
+      "avif": [
+        "assets/optimized/png/spoopy-320.avif",
+        "assets/optimized/png/spoopy-480.avif",
+        "assets/optimized/png/spoopy-640.avif",
+        "assets/optimized/png/spoopy-851.avif"
+      ],
+      "webp": [
+        "assets/optimized/png/spoopy-320.webp",
+        "assets/optimized/png/spoopy-480.webp",
+        "assets/optimized/png/spoopy-640.webp",
+        "assets/optimized/png/spoopy-851.webp"
+      ]
+    }
+  },
+  "assets/png/twitter-ico.png": {
+    "width": 100,
+    "height": 100,
+    "sources": {
+      "avif": [
+        "assets/optimized/png/twitter-ico-100.avif"
+      ],
+      "webp": [
+        "assets/optimized/png/twitter-ico-100.webp"
+      ]
+    }
+  },
+  "assets/png/yt-ico.png": {
+    "width": 100,
+    "height": 100,
+    "sources": {
+      "avif": [
+        "assets/optimized/png/yt-ico-100.avif"
+      ],
+      "webp": [
+        "assets/optimized/png/yt-ico-100.webp"
+      ]
+    }
+  }
+}

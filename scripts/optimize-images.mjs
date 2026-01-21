@@ -1,97 +1,123 @@
 import path from "path";
 import fs from "fs/promises";
-import sharp from "sharp";
-import fg from "fast-glob";
+import { execFile } from "child_process";
+import { promisify } from "util";
 
+const execFileAsync = promisify(execFile);
 const ROOT = process.cwd();
-const OUTPUT_DIR = "assets/optimized";
-const INPUT_GLOB = ["assets/**/*.{png,jpg,jpeg}"];
-const IGNORE_GLOB = [`${OUTPUT_DIR}/**`];
+const OUTPUT_DIR = path.join(ROOT, "assets/optimized");
 const TARGET_WIDTHS = [320, 480, 640, 960, 1280, 1600, 1920];
-const FORMATS = [
-  { ext: "avif", options: { quality: 55, effort: 6 } },
-  { ext: "webp", options: { quality: 75 } },
-];
-
-function getOutputBase(inputPath) {
-  const rel = path.relative(ROOT, inputPath);
-  const relDir = path.dirname(rel);
-  const name = path.parse(rel).name;
-  return {
-    rel,
-    outDir: path.join(ROOT, OUTPUT_DIR, relDir.replace(/^assets[\\/]/, "")),
-    name,
-  };
-}
-
-function pickWidths(originalWidth) {
-  return TARGET_WIDTHS.filter((w) => w <= originalWidth);
-}
 
 async function ensureDir(dirPath) {
   await fs.mkdir(dirPath, { recursive: true });
 }
 
-async function optimizeImage(inputPath, manifest) {
-  const image = sharp(inputPath);
-  const metadata = await image.metadata();
-  if (!metadata.width || !metadata.height) {
-    return;
-  }
-
-  const widths = pickWidths(metadata.width);
-  if (!widths.length) {
-    return;
-  }
-
-  const { rel, outDir, name } = getOutputBase(inputPath);
-  await ensureDir(outDir);
-
-  const sources = {};
-  for (const format of FORMATS) {
-    sources[format.ext] = [];
-    for (const width of widths) {
-      const outFile = `${name}-${width}.${format.ext}`;
-      const outPath = path.join(outDir, outFile);
-      await sharp(inputPath)
-        .resize({ width, withoutEnlargement: true })
-        .toFormat(format.ext, format.options)
-        .toFile(outPath);
-      sources[format.ext].push(
-        path
-          .relative(ROOT, outPath)
-          .split(path.sep)
-          .join("/")
-      );
-    }
-  }
-
-  manifest[rel.split(path.sep).join("/")] = {
-    width: metadata.width,
-    height: metadata.height,
-    sources,
+async function getImageSize(filePath) {
+  const { stdout } = await execFileAsync("sips", [
+    "-g",
+    "pixelWidth",
+    "-g",
+    "pixelHeight",
+    filePath,
+  ]);
+  const widthMatch = stdout.match(/pixelWidth:\s*(\d+)/);
+  const heightMatch = stdout.match(/pixelHeight:\s*(\d+)/);
+  return {
+    width: widthMatch ? Number(widthMatch[1]) : null,
+    height: heightMatch ? Number(heightMatch[1]) : null,
   };
 }
 
+async function listImages(dirPath, files = []) {
+  const entries = await fs.readdir(dirPath, { withFileTypes: true });
+  for (const entry of entries) {
+    const fullPath = path.join(dirPath, entry.name);
+    if (entry.isDirectory()) {
+      if (fullPath.startsWith(OUTPUT_DIR)) {
+        continue;
+      }
+      await listImages(fullPath, files);
+    } else if (/\.(png|jpe?g)$/i.test(entry.name)) {
+      files.push(fullPath);
+    }
+  }
+  return files;
+}
+
+function pickWidths(originalWidth) {
+  const widths = TARGET_WIDTHS.filter((w) => w <= originalWidth);
+  if (!widths.includes(originalWidth)) {
+    widths.push(originalWidth);
+  }
+  return widths.sort((a, b) => a - b);
+}
+
+function toPosix(filePath) {
+  return filePath.split(path.sep).join("/");
+}
+
+async function optimizeImage(inputPath, manifest) {
+  const { width, height } = await getImageSize(inputPath);
+  if (!width || !height) {
+    return;
+  }
+
+  const widths = pickWidths(width);
+  const relPath = toPosix(path.relative(ROOT, inputPath));
+  const relAssetDir = path.relative(path.join(ROOT, "assets"), path.dirname(inputPath));
+  const outDir = path.join(OUTPUT_DIR, relAssetDir);
+  const name = path.parse(inputPath).name;
+
+  await ensureDir(outDir);
+
+  const sources = { avif: [], webp: [] };
+  for (const targetWidth of widths) {
+    const tempPng = path.join(outDir, `${name}-${targetWidth}-tmp.png`);
+    await execFileAsync("sips", [
+      "-Z",
+      String(targetWidth),
+      inputPath,
+      "--out",
+      tempPng,
+    ]);
+
+    const avifPath = path.join(outDir, `${name}-${targetWidth}.avif`);
+    await execFileAsync("avifenc", [
+      "-q",
+      "55",
+      "-s",
+      "6",
+      tempPng,
+      avifPath,
+    ]);
+
+    const webpPath = path.join(outDir, `${name}-${targetWidth}.webp`);
+    await execFileAsync("cwebp", ["-q", "75", tempPng, "-o", webpPath]);
+
+    await fs.unlink(tempPng);
+
+    sources.avif.push(toPosix(path.relative(ROOT, avifPath)));
+    sources.webp.push(toPosix(path.relative(ROOT, webpPath)));
+  }
+
+  manifest[relPath] = { width, height, sources };
+}
+
 async function main() {
-  const inputPaths = await fg(INPUT_GLOB, {
-    cwd: ROOT,
-    ignore: IGNORE_GLOB,
-    onlyFiles: true,
-    absolute: true,
-  });
+  const assetsDir = path.join(ROOT, "assets");
+  const inputPaths = await listImages(assetsDir);
 
   const manifest = {};
   for (const inputPath of inputPaths) {
     await optimizeImage(inputPath, manifest);
   }
 
-  const manifestPath = path.join(ROOT, OUTPUT_DIR, "manifest.json");
+  const manifestPath = path.join(OUTPUT_DIR, "manifest.json");
   await ensureDir(path.dirname(manifestPath));
   await fs.writeFile(manifestPath, JSON.stringify(manifest, null, 2), "utf8");
 
   console.log(`Optimized ${Object.keys(manifest).length} images.`);
-  console.log(`Manifest: ${path.relative(ROOT, manifestPath)}`);
+  console.log(`Manifest: ${toPosix(path.relative(ROOT, manifestPath))}`);
 }
 
 main().catch((err) => {
