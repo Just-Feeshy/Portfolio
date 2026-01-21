@@ -3,6 +3,7 @@ precision highp float;
 uniform vec4 uColor;
 uniform float uNear;
 uniform float uFar;
+uniform float uFade;
 uniform vec3 uLightDir;
 uniform float uSpecStrength;
 uniform float uShininess;
@@ -25,7 +26,10 @@ void main() {
   float spec = pow(max(dot(n, halfDir), 0.0), uShininess);
   vec3 lit = uColor.rgb * (0.5 * diffuse + 0.5) + vec3(1.0) * spec * uSpecStrength;
   float fogDist = distance(cameraPosition, vWorldPos);
-  float fogFactor = clamp((fogDist - uFogNear) / (uFogFar - uFogNear), 0.0, 1.0);
-  vec3 color = mix(lit, uFogColor, fogFactor);
+  float nearFade = mix(0.0, uFogNear, uFade);
+  float farFade = mix(0.1, uFogFar, uFade);
+  float fogFactor = clamp((fogDist - nearFade) / (farFade - nearFade), 0.0, 1.0);
+  vec3 fogColor = mix(vec3(0.0), uFogColor, uFade);
+  vec3 color = mix(lit, fogColor, fogFactor);
   gl_FragColor = vec4(color, uColor.a);
 }

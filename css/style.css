@@ -601,13 +601,6 @@ textarea {
 }
 .project-cs-hero.project-cs-hero--jtc {
   background-image: url(../../assets/jpeg/JTC.jpeg);
-  background-image: image-set(
-    url(../../assets/optimized/jpeg/JTC-1280.avif) type("image/avif") 1x,
-    url(../../assets/optimized/jpeg/JTC-2560.avif) type("image/avif") 2x,
-    url(../../assets/optimized/jpeg/JTC-1280.webp) type("image/webp") 1x,
-    url(../../assets/optimized/jpeg/JTC-2560.webp) type("image/webp") 2x,
-    url(../../assets/jpeg/JTC.jpeg) type("image/jpeg") 1x
-  );
   background-size: cover;
   background-position: center;
 }
@@ -621,13 +614,6 @@ textarea {
 }
 .project-cs-hero.project-cs-hero--spoopy {
   background-image: url(../../assets/jpeg/banner-spoopy.jpeg);
-  background-image: image-set(
-    url(../../assets/optimized/jpeg/banner-spoopy-1280.avif) type("image/avif") 1x,
-    url(../../assets/optimized/jpeg/banner-spoopy-1400.avif) type("image/avif") 2x,
-    url(../../assets/optimized/jpeg/banner-spoopy-1280.webp) type("image/webp") 1x,
-    url(../../assets/optimized/jpeg/banner-spoopy-1400.webp) type("image/webp") 2x,
-    url(../../assets/jpeg/banner-spoopy.jpeg) type("image/jpeg") 1x
-  );
   background-size: cover;
   background-position: center;
 }
@@ -641,13 +627,6 @@ textarea {
 }
 .project-cs-hero.project-cs-hero--dinomite {
   background-image: url(../../assets/png/Dinomite-Gameplay.png);
-  background-image: image-set(
-    url(../../assets/optimized/png/Dinomite-Gameplay-1280.avif) type("image/avif") 1x,
-    url(../../assets/optimized/png/Dinomite-Gameplay-3024.avif) type("image/avif") 2x,
-    url(../../assets/optimized/png/Dinomite-Gameplay-1280.webp) type("image/webp") 1x,
-    url(../../assets/optimized/png/Dinomite-Gameplay-3024.webp) type("image/webp") 2x,
-    url(../../assets/png/Dinomite-Gameplay.png) type("image/png") 1x
-  );
   background-size: cover;
   background-position: center;
 }
@@ -661,13 +640,6 @@ textarea {
 }
 .project-cs-hero.project-cs-hero--balls {
   background-image: url(../../assets/png/project_balls.png);
-  background-image: image-set(
-    url(../../assets/optimized/png/project_balls-1280.avif) type("image/avif") 1x,
-    url(../../assets/optimized/png/project_balls-1572.avif) type("image/avif") 2x,
-    url(../../assets/optimized/png/project_balls-1280.webp) type("image/webp") 1x,
-    url(../../assets/optimized/png/project_balls-1572.webp) type("image/webp") 2x,
-    url(../../assets/png/project_balls.png) type("image/png") 1x
-  );
   background-size: cover;
   background-position: center;
 }
@@ -681,13 +653,6 @@ textarea {
 }
 .project-cs-hero.project-cs-hero--slides {
   background-image: url(../../assets/png/Slide.png);
-  background-image: image-set(
-    url(../../assets/optimized/png/Slide-1280.avif) type("image/avif") 1x,
-    url(../../assets/optimized/png/Slide-2984.avif) type("image/avif") 2x,
-    url(../../assets/optimized/png/Slide-1280.webp) type("image/webp") 1x,
-    url(../../assets/optimized/png/Slide-2984.webp) type("image/webp") 2x,
-    url(../../assets/png/Slide.png) type("image/png") 1x
-  );
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;

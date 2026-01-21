@@ -1,4 +1,5 @@
 import { Renderer, Camera, Transform, Geometry, Program, Mesh, Vec3 } from './assets/js/ogl.mjs'
+import { Tween, Easing, update as tweenUpdate } from 'https://cdn.jsdelivr.net/npm/@tweenjs/tween.js@18.6.4/dist/tween.esm.js'
 
 const canvas = document.querySelector('.home-hero__canvas')
 if (canvas) {
@@ -23,6 +24,7 @@ async function initHeroWebgl(canvas) {
   })
   const gl = renderer.gl
   gl.clearColor(0, 0, 0, 0)
+  canvas.style.opacity = '0'
 
   const hero = canvas.closest('.home-hero, .project-cs-hero')
 
@@ -85,6 +87,7 @@ async function initHeroWebgl(canvas) {
     uniforms: {
       uColor: { value: [6.0/255.0, 66.0/255.0, 115/255.0, 0.8] },
       uTime: { value: 0 },
+      uFade: { value: 0 },
       uLightDir: { value: lightDirNorm },
       uNear: { value: camera.near },
       uFar: { value: camera.far },
@@ -101,6 +104,13 @@ async function initHeroWebgl(canvas) {
   const mesh = new Mesh(gl, { geometry, program })
   mesh.setParent(scene)
   mesh.frustumCulled = false
+
+  const fadeState = { value: 0 }
+  const fadeTween = new Tween(fadeState)
+    .to({ value: 1 }, 4800)
+    .easing(Easing.Cubic.Out)
+    .delay(500)
+  fadeTween.start(performance.now())
 
   const updateCamera = () => {
     camera.position.copy(cameraPosition)
@@ -121,9 +131,12 @@ async function initHeroWebgl(canvas) {
     updateCamera()
   }
 
-  const render = (time) => {
+  const render = (time = performance.now()) => {
     resize()
     program.uniforms.uTime.value = time * 0.001
+    tweenUpdate(time)
+    program.uniforms.uFade.value = fadeState.value
+    canvas.style.opacity = String(fadeState.value)
     renderer.render({ scene, camera })
     requestAnimationFrame(render)
   }
