@@ -64,7 +64,57 @@
 	<div id="openfl-content"></div>
 	
 	<script type="text/javascript">
+		(function() {
+			var targetFps = 120;
+			var frameTime = 1000 / targetFps;
+			var last = 0;
+			window.requestAnimationFrame = function(callback) {
+				var now = performance.now();
+				var delay = Math.max(0, frameTime - (now - last));
+				return setTimeout(function() {
+					last = performance.now();
+					callback(last);
+				}, delay);
+			};
+			window.cancelAnimationFrame = function(id) {
+				clearTimeout(id);
+			};
+			window.requestAnimFrame = window.requestAnimationFrame;
+		})();
 		lime.embed ("Dinomite", "openfl-content", 1280, 720, { parameters: {} });
+		(function() {
+			var targetFps = 120;
+			var attempts = 0;
+			function forceFlixelFps() {
+				var flx = window.flixel && window.flixel.FlxG;
+				if (flx) {
+					if (typeof flx.set_updateFramerate === "function") {
+						flx.set_updateFramerate(targetFps);
+					} else {
+						flx.updateFramerate = targetFps;
+					}
+					if (typeof flx.set_drawFramerate === "function") {
+						flx.set_drawFramerate(targetFps);
+					} else {
+						flx.drawFramerate = targetFps;
+					}
+					if (flx.game && flx.game.stage) {
+						flx.game.stage.frameRate = targetFps;
+					}
+				}
+				var stage = window.openfl && window.openfl.Lib && window.openfl.Lib.current && window.openfl.Lib.current.stage;
+				if (stage) {
+					stage.frameRate = targetFps;
+				}
+				return !!(flx || stage);
+			}
+			var fpsTimer = setInterval(function() {
+				attempts += 1;
+				if (forceFlixelFps() || attempts > 60) {
+					clearInterval(fpsTimer);
+				}
+			}, 250);
+		})();
 	</script>
 	
 </body>
