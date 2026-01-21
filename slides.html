@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"
+    />
+    <style>
+      html,
+      body {
+        position: relative;
+        height: 100%;
+      }
+    body {
+      background: transparent;
+        font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        color: #fff;
+        margin: 0;
+        padding: 0;
+      }
+    body {
+      background: transparent;
+        font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        color: #000;
+        margin: 0;
+        padding: 0;
+      }
+      html,
+      body {
+        position: relative;
+        height: 100%;
+      }
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }.swiper {
+        width: 560px;
+        height: 600px;
+      }.swiper-slide {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 18px;
+        font-size: 22px;
+        font-weight: bold;
+        color: #fff;
+        background-position: center;
+        background-size: cover;
+      }.swiper-slide::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: 18px;
+        background: rgba(0, 0, 0, 0.8);
+        opacity: 0.8;
+        transition: opacity 0.25s ease;
+        pointer-events: none;
+      }.swiper-slide-active::after {
+        opacity: 0.25;
+      }.swiper-slide-prev::after,.swiper-slide-next::after {
+        opacity: 0.5;
+      }.swiper-slide:nth-child(1n) {
+        background-image: url("./assets/jpeg/sketch.jpeg");
+      }.swiper-slide:nth-child(2n) {
+        background-image: url("./assets/png/model.png");
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Swiper -->
+    <div class="swiper mySwiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide"></div>
+        <div class="swiper-slide"></div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+    <script>
+      var swiper = new Swiper('.mySwiper', {
+        effect: 'cards',
+        grabCursor: true,
+      });
+    </script>
+  </body>
+</html>
