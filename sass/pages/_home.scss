@@ -96,6 +96,60 @@
     margin-top: 5rem;
     text-align: center;
   }
+
+  &__cta-actions {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.6rem;
+  }
+
+  &__gif-btn {
+    min-width: min(100%, 32rem);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding-inline: 3.2rem;
+    color: #fff;
+    background: rgba(#fff, 0.08);
+    border: 1px solid rgba(#fff, 0.3);
+    box-shadow: none;
+    backdrop-filter: blur(12px);
+
+    &:hover {
+      background: rgba(#fff, 0.14);
+    }
+
+    &:disabled,
+    &.is-processing {
+      background: rgba(#9ca3af, 0.26);
+      border-color: rgba(#fff, 0.16);
+      color: rgba(#fff, 0.82);
+      cursor: wait;
+      transform: none;
+    }
+  }
+
+  &__gif-btn-spinner {
+    width: 1.8rem;
+    height: 1.8rem;
+    border: 2px solid rgba(#fff, 0.25);
+    border-top-color: #fff;
+    border-radius: 999px;
+    display: none;
+    animation: hero-gif-spin 0.8s linear infinite;
+  }
+
+  &__gif-btn.is-processing &__gif-btn-spinner {
+    display: inline-block;
+  }
+}
+
+@keyframes hero-gif-spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .about {

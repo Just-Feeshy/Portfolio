@@ -3,6 +3,9 @@ attribute vec3 position;
 uniform mat4 modelViewMatrix;
 uniform mat4 projectionMatrix;
 uniform float uTime;
+uniform float uLoopBlend;
+uniform float uLoopProgress;
+uniform float uLoopDuration;
 uniform mat3 normalMatrix;
 uniform mat4 modelMatrix;
 
@@ -11,6 +14,7 @@ varying vec3 vViewPos;
 varying vec3 vWorldPos;
 
 #define N 32
+#define TAU 6.28318530718
 
 float random(vec2 st) {
   return fract(
@@ -38,7 +42,10 @@ void main() {
 	  random(vec2(0.3 * fi, 0.7 * fi))
     ));
 
-    float phase = dot(p.xz, rand) * freq + uTime * speed;
+    float linearPhase = uTime * speed;
+    float loopCycles = max(1.0, floor((speed * uLoopDuration / TAU) + 0.5));
+    float loopPhase = TAU * uLoopProgress * loopCycles;
+    float phase = dot(p.xz, rand) * freq + mix(linearPhase, loopPhase, uLoopBlend);
     float wave = 0.41 * exp(sin(phase) - 1.0) /** * exp(sin(pos.x * freq + uTime * speed) - 1.0) **/;
     float dx = wave * cos(phase);
 

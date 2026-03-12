@@ -83,14 +83,28 @@
     <section class="home-hero">
       <canvas class="home-hero__canvas" aria-hidden="true"></canvas>
       <div class="home-hero__content">
-        <h1 class="heading-primary">My Portfolio Site!</h1>
+        <h1 class="heading-primary">Welcome to My Portfolio!</h1>
         <div class="home-hero__info">
           <p class="text-primary">
             Made with WebGL
           </p>
         </div>
         <div class="home-hero__cta">
-          <a href="/#projects" class="btn btn--bg">Projects</a>
+          <div class="home-hero__cta-actions">
+            <a href="/#projects" class="btn btn--bg">Projects</a>
+            <button
+              type="button"
+              class="btn btn--bg home-hero__gif-btn"
+              data-hero-gif-button
+              disabled
+            >
+              <span data-hero-gif-label>Save as looped gif</span>
+              <span
+                class="home-hero__gif-btn-spinner"
+                aria-hidden="true"
+              ></span>
+            </button>
+          </div>
         </div>
       </div>
       <div class="home-hero__socials">
@@ -124,9 +138,6 @@
       <div class="main-container">
         <h2 class="heading heading-sec heading-sec__mb-med">
           <span class="heading-sec__main">About Me</span>
-          <span class="heading-sec__sub">
-            Later down the line, most will find my focus for high-performance real-time rendering systems and the tooling/scripting layers that let teams ship faster.
-          </span>
         </h2>
         <div class="about__content">
           <div class="about__content-main">

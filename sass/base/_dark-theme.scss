@@ -36,6 +36,13 @@ body {
   color: #fff;
 }
 
+.btn--theme-dark {
+  color: var(--dt-accent-2);
+  background: var(--dt-bg);
+  border: 2px solid var(--dt-accent-2);
+  box-shadow: none;
+}
+
 .btn--theme-inv {
   color: var(--dt-accent-2);
   background: transparent;
