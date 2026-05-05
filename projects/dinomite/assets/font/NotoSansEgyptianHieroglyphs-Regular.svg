@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" >
+<svg xmlns="http://www.w3.org/2000/svg"
+><metadata
+></metadata
+><defs
+><font horiz-adv-x="244"
+><font-face font-family="Noto Sans EgyptHiero" units-per-em="1000" ascent="1324" descent="-326"
+></font-face
+><missing-glyph horiz-adv-x="600" d="M94 0V714H505V0H94ZM145 51H454V663H145V51Z"
+></missing-glyph
+><glyph unicode="&#xd;" d=""
+></glyph
+><glyph unicode=" " d=""
+></glyph
+><glyph unicode="&#xa0;" d=""
+></glyph
+><glyph unicode="&#x200c;" horiz-adv-x="0" d="M-21 -133V628H21V-133H-21Z"
+></glyph
+><glyph unicode="&#x200d;" horiz-adv-x="0" d="M-21 -133V535L-83 473l-26 27l82 82l-82 81l26 27L0 607l83 83l26 -27L27 582l82 -82L83 473L21 535V-133H-21Z"
+></glyph
+><glyph unicode="&#x25cc;" horiz-adv-x="594" d="M297 540q11 0 18.5 -7.5T323 514q0 -10 -7.5 -18T297 488q-10 0 -18 8t-8 18q0 11 8 18.5t18 7.5ZM213 522q11 0 18.5 -7.5T239 496q0 -10 -7.5 -18T213 470q-10 0 -18 8t-8 18q0 11 8 18.5t18 7.5ZM381 522q11 0 18.5 -7.5T407 496q0 -10 -7.5 -18T381 470q-10 0 -18 8t-8 18q0 11 8 18.5t18 7.5ZM113 449q0 11 8 18.5t18 7.5q11 0 18.5 -7.5T165 449q0 -10 -7.5 -18T139 423q-10 0 -18 8t-8 18ZM429 449q0 11 8 18.5t18 7.5q11 0 18.5 -7.5T481 449q0 -10 -7.5 -18T455 423q-10 0 -18 8t-8 18ZM66 375q0 11 8 18.5T92 401q11 0 18.5 -7.5T118 375q0 -10 -7.5 -18T92 349q-10 0 -18 8t-8 18ZM476 375q0 11 8 18.5t18 7.5q11 0 18.5 -7.5T528 375q0 -10 -7.5 -18T502 349q-10 0 -18 8t-8 18ZM48 291q0 11 8 18.5T74 317q11 0 18.5 -7.5T100 291q0 -10 -7.5 -18T74 265q-10 0 -18 8t-8 18ZM494 291q0 11 8 18.5t18 7.5q11 0 18.5 -7.5T546 291q0 -10 -7.5 -18T520 265q-10 0 -18 8t-8 18ZM66 207q0 11 8 18.5T92 233q11 0 18.5 -7.5T118 207q0 -10 -7.5 -18T92 181q-10 0 -18 8t-8 18ZM476 207q0 11 8 18.5t18 7.5q11 0 18.5 -7.5T528 207q0 -10 -7.5 -18T502 181q-10 0 -18 8t-8 18ZM113 133q0 11 8 18.5t18 7.5q11 0 18.5 -7.5T165 133q0 -10 -7.5 -18T139 107q-10 0 -18 8t-8 18ZM429 133q0 11 8 18.5t18 7.5q11 0 18.5 -7.5T481 133q0 -10 -7.5 -18T455 107q-10 0 -18 8t-8 18ZM213 112q11 0 18.5 -7.5T239 86q0 -10 -7.5 -18T213 60q-10 0 -18 8t-8 18q0 11 8 18.5t18 7.5ZM381 112q11 0 18.5 -7.5T407 86q0 -10 -7.5 -18T381 60q-10 0 -18 8t-8 18q0 11 8 18.5t18 7.5ZM297 94q11 0 18.5 -7.5T323 68q0 -10 -7.5 -18T297 42q-10 0 -18 8t-8 18q0 11 8 18.5T297 94Z"
+></glyph
+></font
+></defs
+><g style="font-family: &quot;Noto Sans EgyptHiero&quot;; font-size:50;fill:black"
+><text x="20" y="50"
+>!&quot;#$%&amp;&#39;()*+,-./0123456789:;&#229;&lt;&gt;?</text
+><text x="20" y="100"
+>@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_</text
+><text x="20" y="150"
+>` abcdefghijklmnopqrstuvwxyz|{}~</text
+></g
+></svg
+>
