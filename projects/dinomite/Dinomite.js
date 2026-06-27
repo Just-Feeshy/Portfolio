@@ -913,7 +913,7 @@ ApplicationMain.main = function() {
 ApplicationMain.create = function(config) {
 	var app = new openfl_display_Application();
 	ManifestResources.init(config);
-	app.meta.h["build"] = "89";
+	app.meta.h["build"] = "88";
 	app.meta.h["company"] = "Los Boys";
 	app.meta.h["file"] = "Dinomite";
 	app.meta.h["name"] = "Dinomite";
@@ -1444,6 +1444,7 @@ lime_utils_ObjectPool.prototype = {
 		if(object != null && !this.__pool.exists(object)) {
 			this.__pool.set(object,false);
 			this.clean(object);
+			this.__pool.set(object,false);
 			if(this.__inactiveObject0 == null) {
 				this.__inactiveObject0 = object;
 			} else if(this.__inactiveObject1 == null) {
@@ -1486,6 +1487,7 @@ lime_utils_ObjectPool.prototype = {
 					this.__inactiveObject1 = this.__inactiveObjectList.pop();
 				}
 			}
+			this.__pool.set(object1,true);
 			this.inactiveObjects--;
 			this.activeObjects++;
 			object = object1;
@@ -1499,9 +1501,15 @@ lime_utils_ObjectPool.prototype = {
 		return object;
 	}
 	,release: function(object) {
+		if(object == null || !this.__pool.exists(object)) {
+			lime_utils_Log.error("Object is not a member of the pool",{ fileName : "lime/utils/ObjectPool.hx", lineNumber : 153, className : "lime.utils.ObjectPool", methodName : "release"});
+		} else if(!this.__pool.get(object)) {
+			lime_utils_Log.error("Object has already been released",{ fileName : "lime/utils/ObjectPool.hx", lineNumber : 157, className : "lime.utils.ObjectPool", methodName : "release"});
+		}
 		this.activeObjects--;
 		if(this.__size == null || this.activeObjects + this.inactiveObjects < this.__size) {
 			this.clean(object);
+			this.__pool.set(object,false);
 			if(this.__inactiveObject0 == null) {
 				this.__inactiveObject0 = object;
 			} else if(this.__inactiveObject1 == null) {
@@ -1531,6 +1539,7 @@ lime_utils_ObjectPool.prototype = {
 		}
 	}
 	,__addInactive: function(object) {
+		this.__pool.set(object,false);
 		if(this.__inactiveObject0 == null) {
 			this.__inactiveObject0 = object;
 		} else if(this.__inactiveObject1 == null) {
@@ -1557,6 +1566,7 @@ lime_utils_ObjectPool.prototype = {
 				this.__inactiveObject1 = this.__inactiveObjectList.pop();
 			}
 		}
+		this.__pool.set(object,true);
 		this.inactiveObjects--;
 		this.activeObjects++;
 		return object;
@@ -4966,6 +4976,9 @@ Controls.prototype = $extend(flixel_input_actions_FlxActionSet.prototype,{
 		flixel_input_actions_FlxActionSet.prototype.update.call(this);
 	}
 	,checkByName: function(name) {
+		if(!Object.prototype.hasOwnProperty.call(this.byName.h,name)) {
+			throw haxe_Exception.thrown("Invalid name: " + name);
+		}
 		return this.byName.h[name].check();
 	}
 	,getDialogueName: function(action) {
@@ -12476,7 +12489,7 @@ lime_text_Font.prototype = {
 	}
 	,__class__: lime_text_Font
 };
-var _$_$ASSET_$_$assets_$font_$notosansegyptianhieroglyphs_$regular_$ttf = $hx_exports["__ASSET__assets_font_notosansegyptianhieroglyphs_regular_ttf"] = function() {
+var _$_$ASSET_$_$assets_$font_$notosansegyptianhieroglyphs_$regular_$ttf = function() {
 	this.ascender = 1324;
 	this.descender = -326;
 	this.height = 1650;
@@ -12488,12 +12501,13 @@ var _$_$ASSET_$_$assets_$font_$notosansegyptianhieroglyphs_$regular_$ttf = $hx_e
 	lime_text_Font.call(this);
 };
 $hxClasses["__ASSET__assets_font_notosansegyptianhieroglyphs_regular_ttf"] = _$_$ASSET_$_$assets_$font_$notosansegyptianhieroglyphs_$regular_$ttf;
+$hx_exports["__ASSET__assets_font_notosansegyptianhieroglyphs_regular_ttf"] = _$_$ASSET_$_$assets_$font_$notosansegyptianhieroglyphs_$regular_$ttf;
 _$_$ASSET_$_$assets_$font_$notosansegyptianhieroglyphs_$regular_$ttf.__name__ = "__ASSET__assets_font_notosansegyptianhieroglyphs_regular_ttf";
 _$_$ASSET_$_$assets_$font_$notosansegyptianhieroglyphs_$regular_$ttf.__super__ = lime_text_Font;
 _$_$ASSET_$_$assets_$font_$notosansegyptianhieroglyphs_$regular_$ttf.prototype = $extend(lime_text_Font.prototype,{
 	__class__: _$_$ASSET_$_$assets_$font_$notosansegyptianhieroglyphs_$regular_$ttf
 });
-var _$_$ASSET_$_$flixel_$fonts_$nokiafc22_$ttf = $hx_exports["__ASSET__flixel_fonts_nokiafc22_ttf"] = function() {
+var _$_$ASSET_$_$flixel_$fonts_$nokiafc22_$ttf = function() {
 	this.ascender = 2048;
 	this.descender = -512;
 	this.height = 2816;
@@ -12505,12 +12519,13 @@ var _$_$ASSET_$_$flixel_$fonts_$nokiafc22_$ttf = $hx_exports["__ASSET__flixel_fo
 	lime_text_Font.call(this);
 };
 $hxClasses["__ASSET__flixel_fonts_nokiafc22_ttf"] = _$_$ASSET_$_$flixel_$fonts_$nokiafc22_$ttf;
+$hx_exports["__ASSET__flixel_fonts_nokiafc22_ttf"] = _$_$ASSET_$_$flixel_$fonts_$nokiafc22_$ttf;
 _$_$ASSET_$_$flixel_$fonts_$nokiafc22_$ttf.__name__ = "__ASSET__flixel_fonts_nokiafc22_ttf";
 _$_$ASSET_$_$flixel_$fonts_$nokiafc22_$ttf.__super__ = lime_text_Font;
 _$_$ASSET_$_$flixel_$fonts_$nokiafc22_$ttf.prototype = $extend(lime_text_Font.prototype,{
 	__class__: _$_$ASSET_$_$flixel_$fonts_$nokiafc22_$ttf
 });
-var _$_$ASSET_$_$flixel_$fonts_$monsterrat_$ttf = $hx_exports["__ASSET__flixel_fonts_monsterrat_ttf"] = function() {
+var _$_$ASSET_$_$flixel_$fonts_$monsterrat_$ttf = function() {
 	this.ascender = 968;
 	this.descender = -251;
 	this.height = 1219;
@@ -12522,6 +12537,7 @@ var _$_$ASSET_$_$flixel_$fonts_$monsterrat_$ttf = $hx_exports["__ASSET__flixel_f
 	lime_text_Font.call(this);
 };
 $hxClasses["__ASSET__flixel_fonts_monsterrat_ttf"] = _$_$ASSET_$_$flixel_$fonts_$monsterrat_$ttf;
+$hx_exports["__ASSET__flixel_fonts_monsterrat_ttf"] = _$_$ASSET_$_$flixel_$fonts_$monsterrat_$ttf;
 _$_$ASSET_$_$flixel_$fonts_$monsterrat_$ttf.__name__ = "__ASSET__flixel_fonts_monsterrat_ttf";
 _$_$ASSET_$_$flixel_$fonts_$monsterrat_$ttf.__super__ = lime_text_Font;
 _$_$ASSET_$_$flixel_$fonts_$monsterrat_$ttf.prototype = $extend(lime_text_Font.prototype,{
@@ -12601,31 +12617,34 @@ openfl_text_Font.prototype = $extend(lime_text_Font.prototype,{
 	,__class__: openfl_text_Font
 	,__properties__: {set_fontName:"set_fontName",get_fontName:"get_fontName"}
 });
-var _$_$ASSET_$_$OPENFL_$_$assets_$font_$notosansegyptianhieroglyphs_$regular_$ttf = $hx_exports["__ASSET__OPENFL__assets_font_notosansegyptianhieroglyphs_regular_ttf"] = function() {
+var _$_$ASSET_$_$OPENFL_$_$assets_$font_$notosansegyptianhieroglyphs_$regular_$ttf = function() {
 	this.__fromLimeFont(new _$_$ASSET_$_$assets_$font_$notosansegyptianhieroglyphs_$regular_$ttf());
 	openfl_text_Font.call(this);
 };
 $hxClasses["__ASSET__OPENFL__assets_font_notosansegyptianhieroglyphs_regular_ttf"] = _$_$ASSET_$_$OPENFL_$_$assets_$font_$notosansegyptianhieroglyphs_$regular_$ttf;
+$hx_exports["__ASSET__OPENFL__assets_font_notosansegyptianhieroglyphs_regular_ttf"] = _$_$ASSET_$_$OPENFL_$_$assets_$font_$notosansegyptianhieroglyphs_$regular_$ttf;
 _$_$ASSET_$_$OPENFL_$_$assets_$font_$notosansegyptianhieroglyphs_$regular_$ttf.__name__ = "__ASSET__OPENFL__assets_font_notosansegyptianhieroglyphs_regular_ttf";
 _$_$ASSET_$_$OPENFL_$_$assets_$font_$notosansegyptianhieroglyphs_$regular_$ttf.__super__ = openfl_text_Font;
 _$_$ASSET_$_$OPENFL_$_$assets_$font_$notosansegyptianhieroglyphs_$regular_$ttf.prototype = $extend(openfl_text_Font.prototype,{
 	__class__: _$_$ASSET_$_$OPENFL_$_$assets_$font_$notosansegyptianhieroglyphs_$regular_$ttf
 });
-var _$_$ASSET_$_$OPENFL_$_$flixel_$fonts_$nokiafc22_$ttf = $hx_exports["__ASSET__OPENFL__flixel_fonts_nokiafc22_ttf"] = function() {
+var _$_$ASSET_$_$OPENFL_$_$flixel_$fonts_$nokiafc22_$ttf = function() {
 	this.__fromLimeFont(new _$_$ASSET_$_$flixel_$fonts_$nokiafc22_$ttf());
 	openfl_text_Font.call(this);
 };
 $hxClasses["__ASSET__OPENFL__flixel_fonts_nokiafc22_ttf"] = _$_$ASSET_$_$OPENFL_$_$flixel_$fonts_$nokiafc22_$ttf;
+$hx_exports["__ASSET__OPENFL__flixel_fonts_nokiafc22_ttf"] = _$_$ASSET_$_$OPENFL_$_$flixel_$fonts_$nokiafc22_$ttf;
 _$_$ASSET_$_$OPENFL_$_$flixel_$fonts_$nokiafc22_$ttf.__name__ = "__ASSET__OPENFL__flixel_fonts_nokiafc22_ttf";
 _$_$ASSET_$_$OPENFL_$_$flixel_$fonts_$nokiafc22_$ttf.__super__ = openfl_text_Font;
 _$_$ASSET_$_$OPENFL_$_$flixel_$fonts_$nokiafc22_$ttf.prototype = $extend(openfl_text_Font.prototype,{
 	__class__: _$_$ASSET_$_$OPENFL_$_$flixel_$fonts_$nokiafc22_$ttf
 });
-var _$_$ASSET_$_$OPENFL_$_$flixel_$fonts_$monsterrat_$ttf = $hx_exports["__ASSET__OPENFL__flixel_fonts_monsterrat_ttf"] = function() {
+var _$_$ASSET_$_$OPENFL_$_$flixel_$fonts_$monsterrat_$ttf = function() {
 	this.__fromLimeFont(new _$_$ASSET_$_$flixel_$fonts_$monsterrat_$ttf());
 	openfl_text_Font.call(this);
 };
 $hxClasses["__ASSET__OPENFL__flixel_fonts_monsterrat_ttf"] = _$_$ASSET_$_$OPENFL_$_$flixel_$fonts_$monsterrat_$ttf;
+$hx_exports["__ASSET__OPENFL__flixel_fonts_monsterrat_ttf"] = _$_$ASSET_$_$OPENFL_$_$flixel_$fonts_$monsterrat_$ttf;
 _$_$ASSET_$_$OPENFL_$_$flixel_$fonts_$monsterrat_$ttf.__name__ = "__ASSET__OPENFL__flixel_fonts_monsterrat_ttf";
 _$_$ASSET_$_$OPENFL_$_$flixel_$fonts_$monsterrat_$ttf.__super__ = openfl_text_Font;
 _$_$ASSET_$_$OPENFL_$_$flixel_$fonts_$monsterrat_$ttf.prototype = $extend(openfl_text_Font.prototype,{
@@ -13828,7 +13847,6 @@ PlayState.prototype = $extend(BetterUIStates.prototype,{
 		this.highScore = new flixel_text_FlxText(20,20 + this.scoreTxt.get_height(),null,"High Score: " + Std.string(flixel_FlxG.save.data.highScore),16);
 		this.highScore.scrollFactor.set(0,0);
 		this.add(this.scoreTxt);
-		this.add(this.highScore);
 		BetterUIStates.prototype.create.call(this);
 	}
 	,update: function(elapsed) {
@@ -49926,7 +49944,7 @@ flixel_input_FlxKeyManager.prototype = {
 		if(this._keyListMap.h.hasOwnProperty(KeyCode)) {
 			return this.checkStatusUnsafe(KeyCode,Status);
 		}
-		return false;
+		throw haxe_Exception.thrown("Invalid key code: " + Std.string(KeyCode) + ".");
 	}
 	,checkStatusUnsafe: function(KeyCode,Status) {
 		return this._keyListMap.h[KeyCode].hasState(Status);
@@ -92548,7 +92566,7 @@ var lime_utils_AssetCache = function() {
 	this.audio = new haxe_ds_StringMap();
 	this.font = new haxe_ds_StringMap();
 	this.image = new haxe_ds_StringMap();
-	this.version = 943698;
+	this.version = 65832;
 };
 $hxClasses["lime.utils.AssetCache"] = lime_utils_AssetCache;
 lime_utils_AssetCache.__name__ = "lime.utils.AssetCache";
@@ -133066,7 +133084,7 @@ openfl_events_UncaughtErrorEvent.prototype = $extend(openfl_events_ErrorEvent.pr
 	,__class__: openfl_events_UncaughtErrorEvent
 });
 var openfl_events_UncaughtErrorEvents = function() {
-	this.__enabled = true;
+	this.__enabled = false;
 	openfl_events_EventDispatcher.call(this);
 };
 $hxClasses["openfl.events.UncaughtErrorEvents"] = openfl_events_UncaughtErrorEvents;
@@ -133084,9 +133102,6 @@ openfl_events_UncaughtErrorEvents.prototype = $extend(openfl_events_EventDispatc
 			useCapture = false;
 		}
 		openfl_events_EventDispatcher.prototype.addEventListener.call(this,type,listener,useCapture,priority,useWeakReference);
-		if(Object.prototype.hasOwnProperty.call(this.__eventMap.h,"uncaughtError")) {
-			this.__enabled = true;
-		}
 	}
 	,removeEventListener: function(type,listener,useCapture) {
 		if(useCapture == null) {
@@ -143331,7 +143346,7 @@ while(_g < _g1) {
 }
 lime_system_CFFI.available = false;
 lime_system_CFFI.enabled = false;
-lime_utils_Log.level = 3;
+lime_utils_Log.level = 4;
 if(typeof console == "undefined") {
 	console = {}
 }
@@ -143526,7 +143541,7 @@ flixel_FlxCamera.renderRect = (function($this) {
 	return $r;
 }(this));
 openfl_display_Shader.__meta__ = { fields : { glProgram : { SuppressWarnings : ["checkstyle:Dynamic"]}}};
-flixel_system_FlxVersion.sha = "16ebdb05f557361d93821d21cfbada9056d5e881\n";
+flixel_system_FlxVersion.sha = "d547ecf6d1b12f55ddd6b44239cb34301be6b92d\n";
 flixel_math_FlxRandom.MULTIPLIER = 48271.0;
 flixel_math_FlxRandom.MODULUS = 2147483647;
 flixel_FlxG.autoPause = true;
@@ -146988,6 +147003,7 @@ openfl_utils__$internal_format_amf3_AMF3Array.__meta__ = { fields : { extra : { 
 ApplicationMain.main();
 })(typeof exports != "undefined" ? exports : typeof window != "undefined" ? window : typeof self != "undefined" ? self : this, typeof window != "undefined" ? window : typeof global != "undefined" ? global : typeof self != "undefined" ? self : this);
 
+//# sourceMappingURL=Dinomite.js.map
 });
 	if (typeof self !== "undefined" && self.constructor.name.includes("Worker")) {
 		// No need for exports in a worker context, just initialize statics.
